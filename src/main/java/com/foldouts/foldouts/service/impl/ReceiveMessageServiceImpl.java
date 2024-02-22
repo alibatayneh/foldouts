@@ -84,7 +84,7 @@ public class ReceiveMessageServiceImpl implements ReceiveMessageService {
                 case HELP:
                     // return help message based on if opted-in or not.
                     if (customer.isOptedIn()) {
-                        return "You are currently opted-in to the Foldouts service! \n " +
+                        return "You are currently opted-in to the Foldouts service! \n" +
                                 "Reply STOP to opt-out. \n Reply HELP for more info.";
                     } else {
                         return "You are not opted-in to the Foldouts service. \n" +
@@ -100,7 +100,7 @@ public class ReceiveMessageServiceImpl implements ReceiveMessageService {
                         customer.addProductToWishlist(product);
                         customerService.update(customer);
 
-                        return "Product \n" +
+                        return "Product:\n" +
                                 product.getName() + "\n" +
                                 "has been added to your wish list!";
                     } else {
