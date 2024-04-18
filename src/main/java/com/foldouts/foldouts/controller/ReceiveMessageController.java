@@ -5,12 +5,14 @@ import com.foldouts.foldouts.data.Product;
 import com.foldouts.foldouts.data.TwimlResponse;
 import com.foldouts.foldouts.data.Message;
 import com.foldouts.foldouts.service.ReceiveMessageService;
+import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/v1/sms")
@@ -23,6 +25,7 @@ public class ReceiveMessageController {
     @Autowired
     private ReceiveMessageService receiveMessageService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "/receive", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
     public String receiveMessage(@RequestBody MultiValueMap<String, String> receivedMessage) {
 
