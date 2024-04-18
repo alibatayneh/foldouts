@@ -1,12 +1,17 @@
 package com.foldouts.foldouts;
 
-import com.foldouts.foldouts.dao.ProductRepository;
-import com.foldouts.foldouts.data.Product;
+import com.foldouts.foldouts.dao.RoleRepository;
+import com.foldouts.foldouts.dao.UserRepository;
+import com.foldouts.foldouts.models.ApplicationUser;
+import com.foldouts.foldouts.models.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class FoldoutsApplication {
@@ -16,15 +21,19 @@ public class FoldoutsApplication {
 	}
 
 //	@Bean
-//	CommandLineRunner runner(ProductRepository repository) {
+//	CommandLineRunner run(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder){
 //		return args -> {
-//			Product product = new Product("0000000001","Jacket", 19.99);
-//			try {
-//				repository.insert(product);
-//			} catch (DuplicateKeyException e) {
-//				System.err.println("Duplicate key found. Details: " + e.getMessage());
-//			}
+//			Role adminRole = new Role("ROLE_ADMIN");
+//			if(roleRepository.findByAuthority(adminRole.getAuthority()).isPresent()) return;
 //
+//			roleRepository.save(adminRole);
+//			roleRepository.save(new Role("ROLE_USER"));
+//
+//			Set<Role> roles = new HashSet<>();
+//			roles.add(adminRole);
+//
+//			ApplicationUser admin = new ApplicationUser("admin", passwordEncoder.encode("password"), roles);
+//			userRepository.save(admin);
 //		};
 //	}
 }

@@ -1,21 +1,39 @@
 package com.foldouts.foldouts.data;
 
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Data
 @Document
 public class Product {
     @Id
-    private String productId;
+    private ObjectId productId;
     private String name;
     private Double price;
+    private String brand;
+    private String description;
+    private String url;
+    private ArrayList<Map<String,String>> images;
+    private Integer wishListAddCount;
+    private Integer buyButtonCount;
 
-    public Product(String productId, String name, Double price) {
-        this.productId = productId;
+    public Product(String name, Double price, String description, String brand, String url, ArrayList<Map<String,String>> images) {
         this.name = name;
         this.price = price;
+        this.description = description;
+        this.brand = brand;
+        this.url = url;
+        this.images = images;
+        this.wishListAddCount = 0;
+        this.buyButtonCount = 0;
+
     }
 
 }
