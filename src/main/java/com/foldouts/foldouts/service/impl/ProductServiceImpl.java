@@ -3,6 +3,7 @@ package com.foldouts.foldouts.service.impl;
 import com.foldouts.foldouts.dao.ProductRepository;
 import com.foldouts.foldouts.data.Product;
 import com.foldouts.foldouts.service.ProductService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product read(String productId) {
-        return productRepository.findByProductId(productId);
+        ObjectId productObjectId = new ObjectId(productId);
+        return productRepository.findByProductId(productObjectId);
     }
 
     @Override

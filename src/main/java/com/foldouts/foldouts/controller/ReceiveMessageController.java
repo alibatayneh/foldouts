@@ -25,7 +25,6 @@ public class ReceiveMessageController {
     @Autowired
     private ReceiveMessageService receiveMessageService;
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "/receive", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
     public String receiveMessage(@RequestBody MultiValueMap<String, String> receivedMessage) {
 
