@@ -26,7 +26,7 @@ public class MessageParserServiceImpl implements MessageParserService {
         } else if (messageBody.equals("help")) {
             parsedMessage.setActionCode(ParsedMessage.ActionCode.HELP);
             return parsedMessage;
-        } else if (messageBody.contains("product-id:")) {
+        } else if (messageBody.contains("product-id")) {
             try {
                 String productId = extractProductId(messageBody);
                 parsedMessage.setProductId(productId);
@@ -44,8 +44,8 @@ public class MessageParserServiceImpl implements MessageParserService {
     }
 
     private String extractProductId(String messageBody) {
-        // Define a regex pattern to match "product-id:[xxx]" and extract "xxx"
-        String regex = "product-id:\\[([^\\]]+)\\]";
+        // Define a regex pattern to match "product-id[6621be2aa05fc20e0d216369]" and extract "xxx"
+        String regex = "product-id\\[([^\\]]+)\\]";
 
         // Create a Pattern object
         Pattern pattern = Pattern.compile(regex);

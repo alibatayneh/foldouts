@@ -102,7 +102,8 @@ public class ReceiveMessageServiceImpl implements ReceiveMessageService {
 
                         return "Product:\n" +
                                 product.getName() + "\n" +
-                                "has been added to your wish list!";
+                                "has been added to your wish list!\n" +
+                                "View wish list at https://foldouts-front-end.vercel.app";
                     } else {
                         return "You are not opted-in to the Foldouts service \n" +
                                 "Please reply YES to opt-in. \n" +

@@ -1,5 +1,7 @@
 package com.foldouts.foldouts.data;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -34,6 +36,10 @@ public class Product {
         this.wishListAddCount = 0;
         this.buyButtonCount = 0;
 
+    }
+
+    public String getProductId() {
+        return this.productId.toString();
     }
 
 }
