@@ -101,6 +101,7 @@ public class ReceiveMessageServiceImpl implements ReceiveMessageService {
                         customerService.update(customer);
 
                         return "Product:\n" +
+                                "Current Price: " + "$" + product.getPrice() + "\n" +
                                 product.getName() + "\n" +
                                 "has been added to your wish list!\n" +
                                 "View wish list at https://foldouts-front-end.vercel.app";

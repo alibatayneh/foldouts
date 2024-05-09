@@ -35,17 +35,10 @@ public class ProductController {
 
 //    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "/")
-    public ResponseEntity<String> createProduct(@RequestBody Map<String, Object> newProduct) {
+//    public ResponseEntity<String> createProduct(@RequestBody Map<String, Object> newProduct) {
+    public ResponseEntity<String> createProduct(@RequestBody Product newProduct) {
         try {
-            Map<String, Object> dataMap = (Map<String, Object>) newProduct.get("data");
-            String name = (String) dataMap.get("name");
-            Double price = Double.parseDouble((String) dataMap.get("price"));
-            String description = (String) dataMap.get("description");
-            String brand = (String) dataMap.get("brand");
-            String url = (String) dataMap.get("url");
-            ArrayList<Map<String, String>> images = (ArrayList<Map<String, String>>) dataMap.get("images");
-            Product product = new Product(name, price, description, brand, url, images);
-            productService.create(product);
+            productService.create(newProduct);
             return ResponseEntity.ok("Success created product!");
         } catch (Exception e) {
             System.err.println("Error creating product: " + e.getMessage());

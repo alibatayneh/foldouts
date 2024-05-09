@@ -34,6 +34,7 @@ public class Customer {
         String pendingProductsAddedMessage = "The following products have been added to your wish list! \n";
         for(Product product : this.pendingProductAdd) {
             addProductToWishlist(product);
+            pendingProductsAddedMessage += ("Current Price: " + "$" +product.getPrice() + "\n");
             pendingProductsAddedMessage += (product.getName() + "\n");
         }
         this.pendingProductAdd = new ArrayList<>();
