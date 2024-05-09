@@ -45,8 +45,8 @@ public class MessageParserServiceImpl implements MessageParserService {
 
     private String extractProductId(String messageBody) {
         // Define a regex pattern to match "product-id[6621be2aa05fc20e0d216369]" and extract "xxx"
-        String regex = "product-id\\[([^\\]]+)\\]";
-
+//        String regex = "product-id\\[([^\\]]+)\\]";
+        String regex = "\\[([^\\]]+)\\]";
         // Create a Pattern object
         Pattern pattern = Pattern.compile(regex);
 
