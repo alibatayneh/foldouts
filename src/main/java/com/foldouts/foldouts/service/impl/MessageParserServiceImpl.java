@@ -26,7 +26,8 @@ public class MessageParserServiceImpl implements MessageParserService {
         } else if (messageBody.equals("help")) {
             parsedMessage.setActionCode(ParsedMessage.ActionCode.HELP);
             return parsedMessage;
-        } else if (messageBody.contains("product-id")) {
+        } else if (messageBody.contains("[")) {
+            //TO-DO: ^ update classification of add product trigger other than square bracket.
             try {
                 String productId = extractProductId(messageBody);
                 parsedMessage.setProductId(productId);
